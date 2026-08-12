@@ -1,0 +1,756 @@
+/*==================================================
+CANADA GLOBAL BANK
+administrative services
+NEW DESIGN
+PART 1
+==================================================*/
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+
+--primary:#003087;
+--primary2:#0054b8;
+--secondary:#FFD200;
+--success:#16a34a;
+--danger:#dc2626;
+--white:#ffffff;
+--background:#f4f7fb;
+--border:#dde5ef;
+--text:#243145;
+--gray:#6b7280;
+--shadow:0 10px 35px rgba(0,0,0,.08);
+--radius:18px;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:"Roboto",sans-serif;
+background:var(--background);
+color:var(--text);
+overflow-x:hidden;
+
+}
+
+a{
+
+text-decoration:none;
+
+}
+
+img{
+
+display:block;
+max-width:100%;
+
+}
+
+.container{
+
+width:min(650px,94%);
+margin:auto;
+
+}
+
+/*========================================
+HEADER
+========================================*/
+
+.mobile-header{
+
+background:#003087;
+padding:18px 0;
+box-shadow:0 4px 18px rgba(0,0,0,.15);
+
+}
+
+.back-link{
+
+display:inline-flex;
+align-items:center;
+gap:8px;
+color:#fff;
+font-size:15px;
+font-weight:700;
+margin-bottom:20px;
+
+}
+
+.back-link i{
+
+font-size:18px;
+
+}
+
+.mobile-brand{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.mobile-brand img{
+
+width:55px;
+height:55px;
+border-radius:50%;
+background:#fff;
+padding:8px;
+
+}
+
+.mobile-brand h1{
+
+font-size:22px;
+font-weight:800;
+color:#fff;
+
+}
+
+.mobile-brand p{
+
+font-size:14px;
+color:#d8e7ff;
+margin-top:3px;
+
+}
+
+/*========================================
+CARD
+========================================*/
+
+.payment-section{
+
+padding:25px 0 60px;
+
+}
+
+.payment-card{
+
+background:#fff;
+border-radius:22px;
+padding:25px;
+box-shadow:var(--shadow);
+
+}
+
+.payment-title{
+
+margin-bottom:25px;
+
+}
+
+.payment-title h2{
+
+font-size:28px;
+font-weight:800;
+color:#003087;
+
+}
+
+.payment-title p{
+
+margin-top:6px;
+font-size:14px;
+color:#6b7280;
+
+}
+
+/*========================================
+GRID
+========================================*/
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+
+}
+
+.form-group{
+
+display:flex;
+flex-direction:column;
+
+}
+
+.form-group.full{
+
+grid-column:1/-1;
+
+}
+/*========================================
+FIELDS
+========================================*/
+
+.form-group label{
+
+font-size:14px;
+font-weight:700;
+margin-bottom:8px;
+color:#003087;
+
+}
+
+.form-group input,
+.form-group select{
+
+width:100%;
+height:56px;
+padding:0 18px;
+border:1px solid var(--border);
+border-radius:14px;
+background:#fff;
+font-size:15px;
+outline:none;
+transition:.25s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus{
+
+border-color:#0054b8;
+box-shadow:0 0 0 4px rgba(0,84,184,.12);
+
+}
+
+.form-group input[readonly]{
+
+background:#f8fafc;
+font-weight:700;
+color:#003087;
+
+}
+
+/*========================================
+SUMMARY
+========================================*/
+
+.summary-card{
+
+margin-top:28px;
+background:#f8fbff;
+border:1px solid #d7e6ff;
+border-radius:18px;
+padding:22px;
+
+}
+
+.summary-card h3{
+
+font-size:20px;
+font-weight:800;
+color:#003087;
+margin-bottom:18px;
+
+}
+
+.summary-item{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 0;
+border-bottom:1px solid #e5edf7;
+
+}
+
+.summary-item:last-of-type{
+
+border-bottom:none;
+
+}
+
+.summary-item span{
+
+font-size:14px;
+color:#6b7280;
+
+}
+
+.summary-item strong{
+
+font-size:15px;
+font-weight:700;
+color:#111827;
+
+}
+
+/*========================================
+BUTTON
+========================================*/
+
+.pay-btn{
+
+width:100%;
+height:58px;
+margin-top:25px;
+border:none;
+border-radius:14px;
+background:#16a34a;
+color:#fff;
+font-size:17px;
+font-weight:800;
+cursor:pointer;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+transition:.25s;
+
+}
+
+.pay-btn:hover{
+
+background:#15803d;
+transform:translateY(-2px);
+
+}
+/*========================================
+PAYMENT MODAL
+========================================*/
+
+.payment-modal,
+.success-modal,
+.unavailable-modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(5px);
+padding:20px;
+z-index:99999;
+}
+
+.unavailable-modal.show{
+display:flex;
+}
+
+.unavailable-box{
+width:100%;
+max-width:500px;
+background:#fff;
+border-radius:20px;
+padding:30px;
+text-align:center;
+box-shadow:0 25px 50px rgba(0,0,0,.20);
+animation:popup .35s ease;
+}
+
+.unavailable-box h2{
+color:#003087;
+font-size:24px;
+margin-bottom:15px;
+}
+
+.unavailable-box p{
+color:#243145;
+font-size:15px;
+line-height:1.6;
+margin:10px 0;
+}
+
+.unavailable-box button{
+margin-top:20px;
+width:100%;
+height:52px;
+border:none;
+border-radius:12px;
+background:#003087;
+color:#fff;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+}
+
+.payment-box,
+.success-box{
+
+width:100%;
+max-width:500px;
+background:#fff;
+border-radius:20px;
+padding:30px;
+text-align:center;
+box-shadow:0 25px 50px rgba(0,0,0,.20);
+animation:popup .35s ease;
+
+}
+
+.loading-circle,
+.success-icon{
+
+width:90px;
+height:90px;
+margin:0 auto 25px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+
+}
+
+.loading-circle{
+
+background:#eef5ff;
+
+}
+
+.loading-circle i{
+
+font-size:42px;
+color:#003087;
+
+}
+
+.success-icon{
+
+background:#eafaf0;
+
+}
+
+.success-icon i{
+
+font-size:50px;
+color:#16a34a;
+
+}
+
+/*========================================
+RECEIPT
+========================================*/
+
+.receipt-details{
+
+margin-top:25px;
+border:1px solid #e5e7eb;
+border-radius:15px;
+overflow:hidden;
+
+}
+
+.receipt-row{
+
+display:flex;
+justify-content:space-between;
+padding:15px 18px;
+border-bottom:1px solid #edf1f7;
+
+}
+
+.receipt-row:last-child{
+
+border-bottom:none;
+
+}
+
+.receipt-buttons{
+
+margin-top:25px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+
+}
+
+.receipt-buttons button,
+.receipt-buttons a{
+
+flex:1;
+height:52px;
+border:none;
+border-radius:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:700;
+font-size:15px;
+text-decoration:none;
+cursor:pointer;
+
+}
+
+.receipt-buttons button{
+
+background:#003087;
+color:#fff;
+
+}
+
+.receipt-buttons a{
+
+background:#16a34a;
+color:#fff;
+
+}
+/*========================================
+FOOTER
+========================================*/
+
+footer{
+
+margin-top:35px;
+padding:30px 20px;
+background:#003087;
+color:#fff;
+
+}
+
+.footer-content{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+
+}
+
+.footer-content h3,
+.footer-content h4{
+
+margin-bottom:10px;
+font-size:18px;
+font-weight:700;
+
+}
+
+.footer-content p{
+
+font-size:14px;
+line-height:1.7;
+color:#dbe8ff;
+
+}
+
+.copyright{
+
+margin-top:25px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,.15);
+text-align:center;
+font-size:13px;
+color:#cfdcff;
+
+}
+
+/*========================================
+RESPONSIVE
+========================================*/
+
+@media(max-width:768px){
+
+.container{
+
+width:95%;
+
+}
+
+.payment-section{
+
+padding:15px 0 40px;
+
+}
+
+.payment-card{
+
+padding:18px;
+
+}
+
+.payment-title h2{
+
+font-size:22px;
+
+}
+
+.payment-title p{
+
+font-size:13px;
+
+}
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.form-group input,
+.form-group select{
+
+height:54px;
+font-size:16px;
+
+}
+
+.summary-card{
+
+margin-top:22px;
+padding:18px;
+
+}
+
+.summary-item{
+
+flex-direction:column;
+align-items:flex-start;
+gap:4px;
+
+}
+
+.pay-btn{
+
+height:56px;
+font-size:16px;
+
+}
+
+.receipt-row{
+
+flex-direction:column;
+align-items:flex-start;
+gap:5px;
+
+}
+
+.receipt-buttons{
+
+flex-direction:column;
+
+}
+
+.receipt-buttons button,
+.receipt-buttons a{
+
+width:100%;
+
+}
+
+.footer-content{
+
+grid-template-columns:1fr;
+text-align:center;
+
+}
+
+.mobile-brand h1{
+
+font-size:20px;
+
+}
+
+.back-link{
+
+margin-bottom:15px;
+
+}
+
+}
+
+/*========================================
+ANIMATION
+========================================*/
+
+@keyframes popup{
+
+0%{
+
+opacity:0;
+transform:scale(.85);
+
+}
+
+100%{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+/*========================================
+PHONE BOX
+========================================*/
+
+.phone-box{
+display:flex;
+align-items:center;
+width:100%;
+height:56px;
+border:1px solid #dde5ef;
+border-radius:14px;
+overflow:hidden;
+background:#fff;
+}
+
+#countryCode{
+width:90px;
+height:56px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f5f7fb;
+border-right:1px solid #dde5ef;
+font-size:16px;
+font-weight:700;
+color:#003087;
+flex-shrink:0;
+}
+
+.phone-box input{
+flex:1 !important;
+width:auto !important;
+height:56px !important;
+border:none !important;
+border-radius:0 !important;
+background:#fff !important;
+padding:0 16px !important;
+margin:0 !important;
+box-shadow:none !important;
+}
+
+.phone-box input:focus{
+outline:none;
+box-shadow:none !important;
+border:none !important;
+}
+.form-group .phone-box{
+display:flex !important;
+flex-direction:row !important;
+align-items:center !important;
+}
+
+.form-group .phone-box #countryCode{
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+}
+
+.form-group .phone-box input{
+display:block !important;
+flex:1 !important;
+width:100% !important;
+}
+.required{
+    color:#d52b1e;
+    font-weight:700;
+    margin-left:2px;
+}

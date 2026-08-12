@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Virement | Demo Bank</title>
+
+<link rel="stylesheet" href="css/transfer.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+
+<h2>DEMO BANK</h2>
+
+</div>
+
+<ul>
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fas fa-home"></i>
+
+<span>Accueil</span>
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="transfer.html">
+
+<i class="fas fa-paper-plane"></i>
+
+<span>Virement</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="transactions.html">
+
+<i class="fas fa-receipt"></i>
+
+<span>Transactions</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="profile.html">
+
+<i class="fas fa-user"></i>
+
+<span>Mon profil</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fas fa-gear"></i>
+
+<span>Paramètres</span>
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#" onclick="logout()">
+
+<i class="fas fa-right-from-bracket"></i>
+
+<span>Déconnexion</span>
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<header>
+
+<div>
+
+<h1>Effectuer un virement</h1>
+
+<p>
+
+Transférez des fonds rapidement et en toute sécurité.
+
+</p>
+
+</div>
+
+<div class="balance-box">
+
+<span>Solde disponible</span>
+
+<h2 id="availableBalance">$0.00</h2>
+
+</div>
+
+</header>
+
+<section class="transfer-container">
+
+<div class="transfer-card">
+
+<h2>
+
+<i class="fas fa-paper-plane"></i>
+
+Nouveau virement
+
+</h2>
+
+<form id="transferForm">
+
+<div class="form-group">
+
+<label>Compte émetteur</label>
+
+<input
+type="text"
+id="senderAccount"
+readonly>
+
+</div>
+
+<div class="form-group">
+
+<label>Nom du bénéficiaire</label>
+
+<input
+type="text"
+id="beneficiaryName"
+placeholder="Nom complet"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Numéro du compte bénéficiaire</label>
+
+<input
+type="text"
+id="beneficiaryAccount"
+placeholder="CA000000000000"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Banque du bénéficiaire</label>
+
+<select id="bank">
+
+<option value="">Sélectionner</option>
+
+<option>Demo Bank</option>
+
+<option>Banque Nationale</option>
+
+<option>Banque Internationale</option>
+
+<option>Autre Banque</option>
+
+</select>
+
+</div>
+<div class="form-group">
+
+<label>Devise</label>
+
+<select id="currency">
+
+<option value="CAD">Dollar Canadien (CAD)</option>
+
+<option value="USD">Dollar Américain (USD)</option>
+
+<option value="EUR">Euro (EUR)</option>
+
+<option value="GBP">Livre Sterling (GBP)</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label>Montant</label>
+
+<input
+type="number"
+id="amount"
+placeholder="0.00"
+min="1"
+step="0.01"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label>Motif du virement</label>
+
+<textarea
+id="reason"
+rows="4"
+placeholder="Exemple : Paiement facture, Loyer, Cadeau..."
+></textarea>
+
+</div>
+
+<div class="form-group">
+
+<label>Code d'accès</label>
+
+<input
+type="password"
+id="accessCode"
+placeholder="Entrez votre code d'accès"
+required>
+
+</div>
+
+<div class="buttons">
+
+<button
+type="reset"
+class="btn-cancel">
+
+Annuler
+
+</button>
+
+<button
+type="submit"
+class="btn-transfer">
+
+<i class="fas fa-paper-plane"></i>
+
+Envoyer le virement
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+<div class="summary-card">
+
+<h2>
+
+<i class="fas fa-circle-info"></i>
+
+Résumé
+
+</h2>
+
+<div class="summary-item">
+
+<span>Compte émetteur</span>
+
+<strong id="summaryAccount">
+
+--------
+
+</strong>
+
+</div>
+
+<div class="summary-item">
+
+<span>Solde disponible</span>
+
+<strong id="summaryBalance">
+
+0.00 $
+
+</strong>
+
+</div>
+
+<div class="summary-item">
+
+<span>Frais de transaction</span>
+
+<strong>
+
+0.00 $
+
+</strong>
+
+</div>
+
+<div class="summary-item total">
+
+<span>Montant à débiter</span>
+
+<strong id="summaryTotal">
+
+0.00 $
+
+</strong>
+
+</div>
+
+</div>
+
+</section>
+<section class="transfer-info">
+
+<div class="info-card">
+
+<h2>
+
+<i class="fas fa-shield-halved"></i>
+
+Sécurité
+
+</h2>
+
+<ul>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+Toutes les transactions sont sécurisées.
+
+</li>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+Vos données sont chiffrées.
+
+</li>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+Une confirmation sera demandée avant l'envoi.
+
+</li>
+
+<li>
+
+<i class="fas fa-check-circle"></i>
+
+Un reçu sera généré automatiquement.
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="info-card">
+
+<h2>
+
+<i class="fas fa-clock"></i>
+
+Délais de traitement
+
+</h2>
+
+<table class="delay-table">
+
+<tr>
+
+<td>Demo Bank</td>
+
+<td>Immédiat</td>
+
+</tr>
+
+<tr>
+
+<td>Banques nationales</td>
+
+<td>Quelques minutes</td>
+
+</tr>
+
+<tr>
+
+<td>Banques internationales</td>
+
+<td>1 à 3 jours ouvrables</td>
+
+</tr>
+
+</table>
+
+</div>
+
+</section>
+
+<section class="beneficiaries">
+
+<div class="section-title">
+
+<h2>
+
+<i class="fas fa-users"></i>
+
+Bénéficiaires enregistrés
+
+</h2>
+
+</div>
+
+<table class="beneficiary-table">
+
+<thead>
+
+<tr>
+
+<th>Nom</th>
+
+<th>Compte</th>
+
+<th>Banque</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="beneficiaryTable">
+
+<tr>
+
+<td>Jean Dupont</td>
+
+<td>CA785412369874</td>
+
+<td>Demo Bank</td>
+
+<td>
+
+<button
+class="btn-select">
+
+Sélectionner
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>Marie Tremblay</td>
+
+<td>CA456987123654</td>
+
+<td>Banque Nationale</td>
+
+<td>
+
+<button
+class="btn-select">
+
+Sélectionner
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+<section class="limits-section">
+
+<div class="limit-card">
+
+<h2>
+
+<i class="fas fa-chart-line"></i>
+
+Limites de virement
+
+</h2>
+
+<div class="limit-item">
+
+<span>Limite quotidienne</span>
+
+<strong>25 000.00 $</strong>
+
+</div>
+
+<div class="limit-item">
+
+<span>Montant déjà utilisé aujourd'hui</span>
+
+<strong id="usedToday">
+
+0.00 $
+
+</strong>
+
+</div>
+
+<div class="limit-item">
+
+<span>Montant restant</span>
+
+<strong id="remainingLimit">
+
+25 000.00 $
+
+</strong>
+
+</div>
+
+</div>
+
+<div class="limit-card">
+
+<h2>
+
+<i class="fas fa-file-invoice"></i>
+
+Informations
+
+</h2>
+
+<p>
+
+Avant de confirmer votre virement, vérifiez soigneusement les informations du bénéficiaire. Une fois exécutée, une transaction ne peut généralement pas être annulée.
+
+</p>
+
+<div class="tips">
+
+<div>
+
+<i class="fas fa-circle-check"></i>
+
+Vérifiez le numéro de compte.
+
+</div>
+
+<div>
+
+<i class="fas fa-circle-check"></i>
+
+Confirmez le nom du bénéficiaire.
+
+</div>
+
+<div>
+
+<i class="fas fa-circle-check"></i>
+
+Assurez-vous que le montant est correct.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="history-preview">
+
+<div class="section-title">
+
+<h2>
+
+<i class="fas fa-clock-rotate-left"></i>
+
+Derniers virements
+
+</h2>
+
+</div>
+
+<table class="history-table">
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>Bénéficiaire</th>
+
+<th>Montant</th>
+
+<th>Statut</th>
+
+</tr>
+
+</thead>
+
+<tbody id="transferHistory">
+
+<tr>
+
+<td>15/07/2026</td>
+
+<td>Jean Dupont</td>
+
+<td>-250.00 $</td>
+
+<td>
+
+<span class="status success">
+
+Complété
+
+</span>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>13/07/2026</td>
+
+<td>Marie Tremblay</td>
+
+<td>-120.00 $</td>
+
+<td>
+
+<span class="status success">
+
+Complété
+
+</span>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+<section class="confirmation-section">
+
+<div class="confirmation-card">
+
+<h2>
+
+<i class="fas fa-circle-question"></i>
+
+Confirmation du virement
+
+</h2>
+
+<p>
+
+Avant de confirmer, vérifiez les informations ci-dessous.
+
+</p>
+
+<table class="confirmation-table">
+
+<tr>
+
+<td>Compte émetteur</td>
+
+<td id="confirmSender">----------</td>
+
+</tr>
+
+<tr>
+
+<td>Bénéficiaire</td>
+
+<td id="confirmBeneficiary">----------</td>
+
+</tr>
+
+<tr>
+
+<td>Compte bénéficiaire</td>
+
+<td id="confirmAccount">----------</td>
+
+</tr>
+
+<tr>
+
+<td>Banque</td>
+
+<td id="confirmBank">----------</td>
+
+</tr>
+
+<tr>
+
+<td>Devise</td>
+
+<td id="confirmCurrency">CAD</td>
+
+</tr>
+
+<tr>
+
+<td>Montant</td>
+
+<td id="confirmAmount">0.00 $</td>
+
+</tr>
+
+<tr>
+
+<td>Motif</td>
+
+<td id="confirmReason">----------</td>
+
+</tr>
+
+</table>
+
+<div class="confirmation-buttons">
+
+<button
+type="button"
+class="btn-secondary"
+onclick="previewTransfer()">
+
+Prévisualiser
+
+</button>
+
+<button
+type="button"
+class="btn-primary"
+onclick="confirmTransfer()">
+
+Confirmer le virement
+
+</button>
+
+</div>
+
+</div>
+
+<div class="receipt-card">
+
+<h2>
+
+<i class="fas fa-receipt"></i>
+
+Reçu de transaction
+
+</h2>
+
+<div id="receiptContent">
+
+<p>
+
+Le reçu sera généré automatiquement après la confirmation du virement.
+
+</p>
+
+</div>
+
+<button
+type="button"
+class="btn-download"
+onclick="downloadReceipt()">
+
+<i class="fas fa-download"></i>
+
+Télécharger le reçu
+
+</button>
+
+</div>
+
+</section>
+<section class="favorites-section">
+
+<div class="section-title">
+
+<h2>
+
+<i class="fas fa-star"></i>
+
+Favoris
+
+</h2>
+
+</div>
+
+<div class="favorites-grid">
+
+<div class="favorite-card">
+
+<i class="fas fa-user-circle"></i>
+
+<h3>Jean Dupont</h3>
+
+<p>Demo Bank</p>
+
+<button
+type="button"
+onclick="selectFavorite('Jean Dupont','CA785412369874','Demo Bank')">
+
+Utiliser
+
+</button>
+
+</div>
+
+<div class="favorite-card">
+
+<i class="fas fa-user-circle"></i>
+
+<h3>Marie Tremblay</h3>
+
+<p>Banque Nationale</p>
+
+<button
+type="button"
+onclick="selectFavorite('Marie Tremblay','CA456987123654','Banque Nationale')">
+
+Utiliser
+
+</button>
+
+</div>
+
+<div class="favorite-card">
+
+<i class="fas fa-user-circle"></i>
+
+<h3>Entreprise ABC</h3>
+
+<p>Banque Internationale</p>
+
+<button
+type="button"
+onclick="selectFavorite('Entreprise ABC','CA963258741258','Banque Internationale')">
+
+Utiliser
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="security-notice">
+
+<div class="notice-card">
+
+<i class="fas fa-lock"></i>
+
+<div>
+
+<h3>Protection des virements</h3>
+
+<p>
+
+Les virements sont protégés par le chiffrement des données et une vérification de votre code d'accès avant validation.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="notice-card">
+
+<i class="fas fa-triangle-exclamation"></i>
+
+<div>
+
+<h3>Attention</h3>
+
+<p>
+
+Assurez-vous que les informations du bénéficiaire sont exactes avant de confirmer votre transaction.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+<section class="faq-section">
+
+<div class="faq-card">
+
+<h2>
+
+<i class="fas fa-circle-question"></i>
+
+Questions fréquentes
+
+</h2>
+
+<div class="faq-item">
+
+<h4>Quand le bénéficiaire recevra-t-il le virement ?</h4>
+
+<p>
+
+Les virements internes sont généralement instantanés. Les virements vers d'autres banques peuvent prendre de quelques minutes à plusieurs jours ouvrables selon l'établissement.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h4>Puis-je annuler un virement ?</h4>
+
+<p>
+
+Un virement déjà exécuté ne peut généralement pas être annulé. Vérifiez toujours les informations avant de confirmer.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h4>Y a-t-il des frais ?</h4>
+
+<p>
+
+Les virements internes sont gratuits. Certains virements internationaux peuvent entraîner des frais selon les conditions applicables.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="contact-card">
+
+<h2>
+
+<i class="fas fa-headset"></i>
+
+Besoin d'aide ?
+
+</h2>
+
+<p>
+
+Notre service client est disponible pour vous accompagner dans vos opérations bancaires.
+
+</p>
+
+<div class="contact-buttons">
+
+<button type="button">
+
+<i class="fas fa-phone"></i>
+
+Appeler
+
+</button>
+
+<button type="button">
+
+<i class="fas fa-comments"></i>
+
+Discuter
+
+</button>
+
+<button type="button">
+
+<i class="fas fa-envelope"></i>
+
+Envoyer un message
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="transfer-footer">
+
+<div>
+
+<strong>Demo Bank</strong>
+
+<p>
+
+© 2026 Demo Bank. Tous droits réservés.
+
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<a href="#">Confidentialité</a>
+
+<a href="#">Conditions d'utilisation</a>
+
+<a href="#">Sécurité</a>
+
+<a href="#">Contact</a>
+
+</div>
+
+</footer>
+
+</div>
+
+<script src="js/transfer.js"></script>
+<script>
+
+function logout(){
+
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("session");
+
+    window.location.href="login.html";
+
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    const user=JSON.parse(localStorage.getItem("currentUser"));
+
+    if(!user){
+
+        window.location.href="login.html";
+        return;
+
+    }
+
+    document.getElementById("senderAccount").value=user.account;
+    document.getElementById("availableBalance").textContent="$ "+Number(user.balance).toLocaleString("en-CA",{
+
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+
+    });
+
+    document.getElementById("summaryAccount").textContent=user.account;
+
+    document.getElementById("summaryBalance").textContent="$ "+Number(user.balance).toLocaleString("en-CA",{
+
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

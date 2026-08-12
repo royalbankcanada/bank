@@ -1,0 +1,1469 @@
+/*==========================================
+  DEMO BANK
+  transfer.css
+==========================================*/
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+
+background:#f4f7fb;
+display:flex;
+color:#1d3557;
+
+}
+
+/*==========================
+ SIDEBAR
+==========================*/
+
+.sidebar{
+
+width:260px;
+height:100vh;
+position:fixed;
+left:0;
+top:0;
+background:#004b8d;
+color:#fff;
+overflow:auto;
+
+}
+
+.logo{
+
+padding:30px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+background:#003b70;
+
+}
+
+.sidebar ul{
+
+list-style:none;
+
+}
+
+.sidebar li{
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.sidebar a{
+
+display:flex;
+align-items:center;
+gap:15px;
+padding:18px 25px;
+color:#fff;
+text-decoration:none;
+transition:.3s;
+
+}
+
+.sidebar a:hover{
+
+background:#005da8;
+
+}
+
+.sidebar li.active a{
+
+background:#006cc4;
+
+}
+
+.sidebar i{
+
+width:22px;
+text-align:center;
+
+}
+
+/*==========================
+ CONTENU
+==========================*/
+
+.main{
+
+margin-left:260px;
+width:calc(100% - 260px);
+padding:35px;
+
+}
+
+header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+
+}
+
+header h1{
+
+font-size:34px;
+margin-bottom:8px;
+
+}
+
+header p{
+
+color:#666;
+
+}
+
+.balance-box{
+
+background:#0057a3;
+color:#fff;
+padding:20px 30px;
+border-radius:15px;
+text-align:right;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+}
+
+.balance-box span{
+
+display:block;
+margin-bottom:10px;
+opacity:.9;
+
+}
+
+.balance-box h2{
+
+font-size:30px;
+
+}
+/*==========================================
+  FORMULAIRE DE VIREMENT
+==========================================*/
+
+.transfer-container{
+
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+margin-bottom:35px;
+
+}
+
+.transfer-card,
+.summary-card{
+
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.transfer-card h2,
+.summary-card h2{
+
+font-size:24px;
+margin-bottom:25px;
+color:#003f78;
+
+}
+
+.transfer-card h2 i,
+.summary-card h2 i{
+
+margin-right:10px;
+color:#0057a3;
+
+}
+
+.form-group{
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#444;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+width:100%;
+padding:14px;
+border:1px solid #d9e2ec;
+border-radius:10px;
+font-size:15px;
+outline:none;
+transition:.3s;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+border-color:#0057a3;
+box-shadow:0 0 0 3px rgba(0,87,163,.12);
+
+}
+
+.form-group textarea{
+
+resize:vertical;
+min-height:120px;
+
+}
+
+.buttons{
+
+display:flex;
+justify-content:flex-end;
+gap:15px;
+margin-top:25px;
+
+}
+
+.btn-cancel,
+.btn-transfer{
+
+padding:14px 28px;
+border:none;
+border-radius:10px;
+font-size:15px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.btn-cancel{
+
+background:#e5e7eb;
+color:#333;
+
+}
+
+.btn-cancel:hover{
+
+background:#d1d5db;
+
+}
+
+.btn-transfer{
+
+background:#0057a3;
+color:#fff;
+
+}
+
+.btn-transfer:hover{
+
+background:#003f78;
+
+}
+
+/*==========================================
+  RÉSUMÉ
+==========================================*/
+
+.summary-item{
+
+display:flex;
+justify-content:space-between;
+padding:16px 0;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.summary-item:last-child{
+
+border-bottom:none;
+
+}
+
+.summary-item span{
+
+color:#666;
+
+}
+
+.summary-item strong{
+
+color:#1d3557;
+
+}
+
+.summary-item.total{
+
+font-size:18px;
+font-weight:bold;
+
+}
+/*==========================================
+  SÉCURITÉ & DÉLAIS
+==========================================*/
+
+.transfer-info{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:35px;
+
+}
+
+.info-card{
+
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.info-card h2{
+
+font-size:22px;
+margin-bottom:20px;
+color:#003f78;
+
+}
+
+.info-card h2 i{
+
+margin-right:10px;
+color:#0057a3;
+
+}
+
+.info-card ul{
+
+list-style:none;
+
+}
+
+.info-card ul li{
+
+display:flex;
+align-items:center;
+gap:12px;
+padding:12px 0;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.info-card ul li:last-child{
+
+border-bottom:none;
+
+}
+
+.info-card ul li i{
+
+color:#0b8f45;
+
+}
+
+.delay-table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+.delay-table tr{
+
+border-bottom:1px solid #edf2f7;
+
+}
+
+.delay-table td{
+
+padding:14px 8px;
+
+}
+
+.delay-table td:last-child{
+
+text-align:right;
+font-weight:bold;
+color:#0057a3;
+
+}
+
+/*==========================================
+  BÉNÉFICIAIRES
+==========================================*/
+
+.beneficiaries{
+
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+margin-bottom:35px;
+
+}
+
+.section-title{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+
+}
+
+.section-title h2{
+
+font-size:22px;
+color:#003f78;
+
+}
+
+.beneficiary-table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+.beneficiary-table th{
+
+background:#f4f7fb;
+padding:15px;
+text-align:left;
+
+}
+
+.beneficiary-table td{
+
+padding:16px 15px;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.btn-select{
+
+background:#0057a3;
+color:#fff;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.btn-select:hover{
+
+background:#003f78;
+
+}
+/*==========================================
+  LIMITES DE VIREMENT
+==========================================*/
+
+.limits-section{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+margin-bottom:35px;
+
+}
+
+.limit-card{
+
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.limit-card h2{
+
+font-size:22px;
+margin-bottom:20px;
+color:#003f78;
+
+}
+
+.limit-card h2 i{
+
+margin-right:10px;
+color:#0057a3;
+
+}
+
+.limit-item{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 0;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.limit-item:last-child{
+
+border-bottom:none;
+
+}
+
+.limit-item span{
+
+color:#666;
+
+}
+
+.limit-item strong{
+
+color:#1d3557;
+font-size:16px;
+
+}
+
+.limit-card p{
+
+line-height:1.7;
+color:#555;
+margin-bottom:20px;
+
+}
+
+.tips{
+
+display:flex;
+flex-direction:column;
+gap:12px;
+
+}
+
+.tips div{
+
+display:flex;
+align-items:center;
+gap:10px;
+color:#444;
+
+}
+
+.tips i{
+
+color:#0b8f45;
+
+}
+
+/*==========================================
+  HISTORIQUE DES VIREMENTS
+==========================================*/
+
+.history-preview{
+
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+margin-bottom:35px;
+
+}
+
+.history-table{
+
+width:100%;
+border-collapse:collapse;
+
+}
+
+.history-table th{
+
+background:#f4f7fb;
+padding:15px;
+text-align:left;
+
+}
+
+.history-table td{
+
+padding:16px 15px;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.status.success{
+
+display:inline-block;
+padding:8px 14px;
+background:#dff6e5;
+color:#0b8f45;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+
+}
+/*==========================================
+  CONFIRMATION DU VIREMENT
+==========================================*/
+
+.confirmation-section{
+
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+margin-bottom:35px;
+
+}
+
+.confirmation-section h2{
+
+font-size:24px;
+color:#003f78;
+margin-bottom:25px;
+
+}
+
+.confirmation-table{
+
+width:100%;
+border-collapse:collapse;
+margin-bottom:25px;
+
+}
+
+.confirmation-table th{
+
+background:#f4f7fb;
+padding:15px;
+text-align:left;
+
+}
+
+.confirmation-table td{
+
+padding:15px;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.confirmation-actions{
+
+display:flex;
+justify-content:flex-end;
+gap:15px;
+
+}
+
+.btn-preview,
+.btn-confirm{
+
+padding:14px 28px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:15px;
+transition:.3s;
+
+}
+
+.btn-preview{
+
+background:#f1f5f9;
+color:#333;
+
+}
+
+.btn-preview:hover{
+
+background:#dbe4ef;
+
+}
+
+.btn-confirm{
+
+background:#0b8f45;
+color:#fff;
+
+}
+
+.btn-confirm:hover{
+
+background:#08753a;
+
+}
+
+/*==========================================
+  REÇU DE VIREMENT
+==========================================*/
+
+.receipt{
+
+background:#ffffff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+display:none;
+
+}
+
+.receipt.active{
+
+display:block;
+
+}
+
+.receipt h2{
+
+text-align:center;
+margin-bottom:25px;
+color:#003f78;
+
+}
+
+.receipt-item{
+
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.receipt-item:last-child{
+
+border-bottom:none;
+
+}
+
+.receipt-download{
+
+margin-top:30px;
+text-align:center;
+
+}
+
+.receipt-download button{
+
+background:#0057a3;
+color:#fff;
+border:none;
+padding:14px 30px;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.receipt-download button:hover{
+
+background:#003f78;
+
+}
+/*==========================================
+  BÉNÉFICIAIRES FAVORIS
+==========================================*/
+
+.favorite-section{
+
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+margin-bottom:35px;
+
+}
+
+.favorite-section h2{
+
+font-size:22px;
+margin-bottom:20px;
+color:#003f78;
+
+}
+
+.favorite-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+
+}
+
+.favorite-card{
+
+border:1px solid #e5e7eb;
+border-radius:12px;
+padding:20px;
+text-align:center;
+transition:.3s;
+cursor:pointer;
+background:#fafcff;
+
+}
+
+.favorite-card:hover{
+
+transform:translateY(-4px);
+box-shadow:0 10px 20px rgba(0,0,0,.10);
+border-color:#0057a3;
+
+}
+
+.favorite-avatar{
+
+width:70px;
+height:70px;
+border-radius:50%;
+background:#0057a3;
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+font-weight:bold;
+margin:0 auto 15px;
+
+}
+
+.favorite-name{
+
+font-size:17px;
+font-weight:bold;
+color:#1d3557;
+margin-bottom:6px;
+
+}
+
+.favorite-account{
+
+font-size:14px;
+color:#777;
+margin-bottom:15px;
+
+}
+
+.favorite-card button{
+
+background:#0057a3;
+color:#fff;
+border:none;
+padding:10px 18px;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.favorite-card button:hover{
+
+background:#003f78;
+
+}
+
+/*==========================================
+  AVERTISSEMENT SÉCURITÉ
+==========================================*/
+
+.security-alert{
+
+display:flex;
+align-items:flex-start;
+gap:18px;
+background:#fff8e6;
+border-left:5px solid #f4b400;
+padding:22px;
+border-radius:12px;
+margin-bottom:35px;
+
+}
+
+.security-alert i{
+
+font-size:28px;
+color:#f4b400;
+margin-top:3px;
+
+}
+
+.security-alert h3{
+
+margin-bottom:10px;
+color:#7a5200;
+
+}
+
+.security-alert p{
+
+line-height:1.7;
+color:#5d4b1f;
+
+}
+/*==========================================
+  FAQ
+==========================================*/
+
+.faq-section{
+
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+margin-bottom:35px;
+
+}
+
+.faq-section h2{
+
+font-size:24px;
+color:#003f78;
+margin-bottom:25px;
+
+}
+
+.faq-item{
+
+padding:18px 0;
+border-bottom:1px solid #edf2f7;
+
+}
+
+.faq-item:last-child{
+
+border-bottom:none;
+
+}
+
+.faq-item h3{
+
+font-size:17px;
+color:#1d3557;
+margin-bottom:10px;
+
+}
+
+.faq-item p{
+
+line-height:1.7;
+color:#666;
+
+}
+
+/*==========================================
+  SUPPORT
+==========================================*/
+
+.support-card{
+
+background:linear-gradient(135deg,#0057a3,#003f78);
+color:#fff;
+padding:30px;
+border-radius:15px;
+margin-bottom:35px;
+box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.support-card h2{
+
+margin-bottom:15px;
+font-size:24px;
+
+}
+
+.support-card p{
+
+line-height:1.8;
+margin-bottom:20px;
+
+}
+
+.support-buttons{
+
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+
+}
+
+.support-buttons a{
+
+text-decoration:none;
+background:#fff;
+color:#0057a3;
+padding:12px 22px;
+border-radius:10px;
+font-weight:bold;
+transition:.3s;
+
+}
+
+.support-buttons a:hover{
+
+transform:translateY(-3px);
+
+}
+/*==========================================
+  FOOTER
+==========================================*/
+
+.footer{
+
+margin-top:40px;
+padding:25px;
+text-align:center;
+background:#ffffff;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+color:#666;
+font-size:14px;
+
+}
+
+.footer p{
+
+margin:6px 0;
+
+}
+
+.footer a{
+
+color:#0057a3;
+text-decoration:none;
+font-weight:bold;
+
+}
+
+.footer a:hover{
+
+text-decoration:underline;
+
+}
+
+/*==========================================
+  BADGES
+==========================================*/
+
+.badge{
+
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
+
+}
+
+.badge.success{
+
+background:#dff6e5;
+color:#0b8f45;
+
+}
+
+.badge.pending{
+
+background:#fff3cd;
+color:#856404;
+
+}
+
+.badge.failed{
+
+background:#fde2e2;
+color:#b91c1c;
+
+}
+
+/*==========================================
+  ANIMATIONS
+==========================================*/
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.fade-in{
+
+animation:fadeIn .5s ease;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.03);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+.pulse{
+
+animation:pulse 2s infinite;
+
+}
+/*==========================================
+  RESPONSIVE DESIGN
+==========================================*/
+
+@media (max-width:1200px){
+
+.transfer-container,
+.transfer-info,
+.limits-section{
+
+grid-template-columns:1fr;
+
+}
+
+.main{
+
+padding:25px;
+
+}
+
+}
+
+@media (max-width:992px){
+
+.sidebar{
+
+width:80px;
+
+}
+
+.sidebar .logo{
+
+font-size:18px;
+padding:20px 10px;
+
+}
+
+.sidebar a span{
+
+display:none;
+
+}
+
+.main{
+
+margin-left:80px;
+width:calc(100% - 80px);
+
+}
+
+header{
+
+flex-direction:column;
+align-items:flex-start;
+gap:20px;
+
+}
+
+.balance-box{
+
+width:100%;
+text-align:center;
+
+}
+
+.favorite-grid{
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+}
+
+}
+
+@media (max-width:768px){
+
+body{
+
+display:block;
+
+}
+
+.sidebar{
+
+position:relative;
+width:100%;
+height:auto;
+
+}
+
+.main{
+
+margin-left:0;
+width:100%;
+
+}
+
+.buttons,
+.confirmation-actions,
+.support-buttons{
+
+flex-direction:column;
+
+}
+
+.buttons button,
+.confirmation-actions button,
+.support-buttons a{
+
+width:100%;
+
+}
+
+.transfer-card,
+.summary-card,
+.info-card,
+.limit-card,
+.favorite-section,
+.faq-section,
+.history-preview,
+.confirmation-section,
+.receipt,
+.support-card,
+.footer{
+
+padding:20px;
+
+}
+
+table{
+
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+
+}
+
+}
+
+@media (max-width:480px){
+
+header h1{
+
+font-size:24px;
+
+}
+
+.balance-box h2{
+
+font-size:22px;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+font-size:14px;
+
+}
+
+.btn-transfer,
+.btn-cancel,
+.btn-preview,
+.btn-confirm{
+
+padding:12px 18px;
+font-size:14px;
+
+}
+
+.favorite-avatar{
+
+width:55px;
+height:55px;
+font-size:22px;
+
+}
+
+}
+/*==========================================
+  IMPRESSION DU REÇU
+==========================================*/
+
+@media print{
+
+body{
+
+background:#ffffff;
+
+}
+
+.sidebar,
+header,
+.buttons,
+.confirmation-actions,
+.support-card,
+.footer,
+.security-alert,
+.favorite-section,
+.faq-section{
+
+display:none !important;
+
+}
+
+.main{
+
+margin:0;
+width:100%;
+padding:0;
+
+}
+
+.receipt{
+
+display:block !important;
+box-shadow:none;
+border:1px solid #d9d9d9;
+border-radius:0;
+padding:25px;
+
+}
+
+.receipt h2{
+
+text-align:center;
+margin-bottom:30px;
+
+}
+
+.receipt-item{
+
+font-size:15px;
+
+}
+
+}
+
+/*==========================================
+  UTILITAIRES
+==========================================*/
+
+.text-center{
+
+text-align:center;
+
+}
+
+.text-right{
+
+text-align:right;
+
+}
+
+.mt-10{
+
+margin-top:10px;
+
+}
+
+.mt-20{
+
+margin-top:20px;
+
+}
+
+.mt-30{
+
+margin-top:30px;
+
+}
+
+.mb-10{
+
+margin-bottom:10px;
+
+}
+
+.mb-20{
+
+margin-bottom:20px;
+
+}
+
+.mb-30{
+
+margin-bottom:30px;
+
+}
+
+.hidden{
+
+display:none !important;
+
+}
+
+.visible{
+
+display:block !important;
+
+}
+
+.shadow{
+
+box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+}
+
+.rounded{
+
+border-radius:12px;
+
+}
+
+.w-100{
+
+width:100%;
+
+}

